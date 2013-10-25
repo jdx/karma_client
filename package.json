@@ -1,6 +1,7 @@
 {
   "name": "karma-client",
   "description": "karma client",
+  "repository": "https://github.com/dickeyxxx/karma_client",
   "version": "1.0.0",
   "dependencies": {},
   "devDependencies": {
