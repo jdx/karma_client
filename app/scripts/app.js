@@ -1,6 +1,6 @@
 'use strict';
 
-window.local = true;
+window.local = false;
 
 angular.module('karmaClientApp', [
   'ngCookies',
