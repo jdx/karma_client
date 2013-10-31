@@ -10,4 +10,6 @@ angular.module('karmaClientApp')
 
     scope.upvoteUser = ->
       http.post "#{host}/upvote", {user: scope.user}
+      user = _.find scope.leaderboard, (user) -> user["name"] == scope.user
+      user["karma"]++
   ]
