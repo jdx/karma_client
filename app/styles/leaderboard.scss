@@ -3,35 +3,39 @@
 #leaderboard {
   > li {
     &:first-child {
-      .fa, > p, strong {
+      > p > strong, > .star > .fa {
         color: $highlight;
       }
     }
-    .fa {
-      color: $ps-nav-bg;
-      position: relative;
-      > span {
-        position: absolute;
-        display: inline-block;
-        text-align: center;
-        line-height: 40px;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        font-size: 18px;
-        font-weight: bold;
+    > .star {
+      width: 42px;
+      margin-right: 8px;
+      > .fa {
+        color: $ps-nav-bg;
+        position: relative;
+        > span {
+          position: absolute;
+          display: inline-block;
+          text-align: center;
+          line-height: 46px;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          font-size: 20px;
+          font-weight: bold;
+        }
       }
     }
     > p {
       vertical-align: middle;
       display: inline-block;
+      margin: 5px 0;
+      font-size: 16px;
     }
   }
   .badge-karma {
     background: $highlight;
     font-size: 16px;
-    display: inline-block;
-    vertical-align: middle;
   }
 }

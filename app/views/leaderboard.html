@@ -3,7 +3,7 @@
     <h3>Leaderboard</h3>
     <ul id="leaderboard" class="list-group">
       <li class="list-group-item" ng-repeat="user in leaderboard | orderBy:'-karma'">
-        <p><i class='fa fa-star-o fa-3x'><span>{{$index+1}}</span></i></p>
+        <p class='star'><i ng-if="$index<3" class='fa fa-star-o fa-3x'><span>{{$index+1}}</span></i></p>
         <p>
           <strong>{{user.name}}</strong>
         </p>
