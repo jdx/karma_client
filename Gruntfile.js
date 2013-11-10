@@ -12,6 +12,11 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
+    bower: {
+      target: {
+        rjsConfig: 'app/config.js'
+      }
+    },
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
@@ -365,4 +370,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-bower-requirejs');
 };
