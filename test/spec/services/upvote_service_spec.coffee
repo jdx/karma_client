@@ -11,9 +11,9 @@ define ['angular', 'angular_mocks'], ->
     beforeEach ->
       httpBackend.expectPOST(
         'http://c5-karma.herokuapp.com/upvote',
-        { user: 'dickeyxxx' }
+        { user: 'dickeyxxx', comments: 'he rocks' }
       ).respond {}
 
     it 'upvotes a user', ->
-      upvoteService.upvote('dickeyxxx')
+      upvoteService.upvote('dickeyxxx', 'he rocks')
       httpBackend.flush()

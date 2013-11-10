@@ -5,7 +5,7 @@ define ["app"], (app) ->
       $scope.users = _.pluck(res, 'name')
 
     $scope.upvoteUser = ->
-      $upvoteService.upvote $scope.user
+      $upvoteService.upvote $scope.user, $scope.comments
       user = _.find $scope.leaderboard, (user) -> user["name"] == $scope.user
       user["karma"]++
 
