@@ -10,6 +10,7 @@ require.config
     angular: { exports: 'angular' }
     angular_ui_select2: { deps: ['angular'] }
     angular_route: { deps: ['angular'] }
+    select2: { deps: ['jquery'] }
   deps: ['underscore', 'jquery', 'select2', 'angular_ui_select2', 'angular_route']
   priority: 'angular'
 
