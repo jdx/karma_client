@@ -9,7 +9,8 @@ require.config
   shim:
     angular: { exports: 'angular' }
     angular_ui_select2: { deps: ['angular'] }
-  deps: ['underscore', 'jquery', 'select2', 'angular_ui_select2']
+    angular_route: { deps: ['angular'] }
+  deps: ['underscore', 'jquery', 'select2', 'angular_ui_select2', 'angular_route']
   priority: 'angular'
 
 require [
