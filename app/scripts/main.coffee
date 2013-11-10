@@ -5,6 +5,7 @@ require.config
     angular_sanitize: '../bower_components/angular-sanitize/angular-sanitize'
     angular_cookies: '../bower_components/angular-cookies/angular-cookies'
     jquery: '../bower_components/jquery/jquery'
+    underscore: '../bower_components/underscore/underscore'
   shim:
     angular_cookies:
       deps: ['angular']
@@ -12,4 +13,4 @@ require.config
       deps: ['angular']
     angular:
       exports: 'angular'
-  deps: ['bootstrap']
+  deps: ['underscore', 'bootstrap']
