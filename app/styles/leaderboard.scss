@@ -14,7 +14,7 @@
         position: absolute;
         display: inline-block;
         text-align: center;
-        line-height: 100%;
+        line-height: 40px;
         left: 0;
         top: 0;
         bottom: 0;
@@ -30,6 +30,8 @@
   }
   .badge-karma {
     background: $highlight;
-    font-size: 20px;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
   }
 }
