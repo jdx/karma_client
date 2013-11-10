@@ -30,3 +30,12 @@ hr {
   border-color: $highlight;
   border-bottom: 0;
 }
+
+.select2, .select2-container, .select2-choice {
+  height: 43px !important;
+  line-height: 43px !important;
+  font-size: 20px;
+}
+.select2-drop {
+  font-size: 20px;
+}

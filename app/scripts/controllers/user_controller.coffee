@@ -8,3 +8,6 @@ define ["app"], (app) ->
       $upvoteService.upvote $scope.user
       user = _.find $scope.leaderboard, (user) -> user["name"] == $scope.user
       user["karma"]++
+
+    $scope.select2Options =
+      width: "400"

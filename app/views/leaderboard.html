@@ -12,33 +12,31 @@
     </ul>
   </div>
   <div class="col-md-6">
-    <h3>Recent Upvotes</h3>
+    <h3>Upvotes</h3>
     <ul id='upvotes' class='list-group'>
-      <li ng-repeat="user in users" class="clearfix list-group-item">
+      <li class="clearfix list-group-item">
+        <form action="" role="form" ng-submit="upvoteUser()">
+          <button class="btn btn-primary pull-right" type="submit">
+            <i class="fa fa-thumbs-up fa-5x"></i>
+          </button>
+          <div class="form-group">
+            <select ui-select2="select2Options" class="select2" ng-model="user">
+              <option></option>
+              <option ng-repeat="user in users">{{user}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <p ng-show="user" class='help-block'>What did {{user}} do?</p>
+            <input ng-enabled="user" class='form-control input-lg'></input>
+          </div>
+        </form>
+      </li>
+      <li ng-repeat="user in users" class="list-group-item">
         <p><i class='fa fa-thumbs-up fa-3x'></i></p>
         <p class='body'>
           <strong class="highlight">{{user}}++</strong> for fixing karma by <strong>@dickeyxxx</strong>
         </p>
       </li>
     </ul>
-  </div>
-</div>
-<div class='row'>
-  <div class="col-md-3 form">
-    <h2>Upvote</h2>
-    <form action="" role="form" ng-submit="upvoteUser()">
-      <div class="form-group">
-        <select ui-select2 class="select2" ng-model="user">
-          <option ng-repeat="user in users">{{user}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input class='form-control input-lg'></input>
-        <p class='help-block'>What did {{user}} do?</p>
-      </div>
-      <button class="btn btn-primary" type="submit">
-        <i class="fa fa-thumbs-up fa-2x"></i>
-      </button>
-    </form>
   </div>
 </div>
