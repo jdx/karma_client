@@ -146,7 +146,7 @@ module.exports = function (grunt) {
       dist: {},
       server: {
         options: {
-          debugInfo: true
+          debug: true
         }
       }
     },

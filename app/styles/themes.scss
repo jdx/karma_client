@@ -1,0 +1,59 @@
+ /*Variables*/
+
+ /*Global values*/
+
+ /*Grays*/
+
+$ps-text:         #2A3A48;
+$ps-nav-bg:       #2A3A48;
+$ps-link-text:    #3E6372;
+$ps-nav-text:     #B2D4DC;
+$ps-well-bg:      #B2D4DC;
+$ps-jumbotron-bg: #FF4B00;
+$ps-bg:           #FAFAFF;
+
+$gray-darker:            lighten(#000, 13.5%);
+$gray-dark:              lighten(#000, 20%);
+$gray:                   lighten(#000, 33.5%);
+$gray-light:             lighten(#000, 60%);
+$gray-lighter:           lighten(#000, 93.5%);
+
+ /*Brand colors*/
+
+$highlight:             $ps-jumbotron-bg;
+$brand-primary:         $ps-jumbotron-bg;
+$brand-success:         #5cb85c;
+$brand-warning:         #f0ad4e;
+$brand-danger:          #d9534f;
+$brand-info:            #5bc0de;
+
+ /*Scaffolding*/
+ /*-------------------------*/
+
+$body-bg:               $ps-bg;
+$text-color:            $ps-text;
+
+ /*Links*/
+ /*-------------------------*/
+
+$link-color:            $ps-link-text;
+$link-hover-color:      darken($link-color, 15%);
+
+ /*Typography*/
+ /*-------------------------*/
+
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+
+$font-size-base:          14px;
+$font-size-large:         ceil($font-size-base * 1.25);
+$font-size-small:         ceil($font-size-base * 0.85);
+
+$line-height-base:        1.428571429;
+$line-height-computed:    floor($font-size-base * $line-height-base);
+
+$headings-font-family:    $font-family-base;
+$headings-font-weight:    500;
+$headings-line-height:    1.1;

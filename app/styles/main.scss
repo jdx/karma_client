@@ -1,31 +1,32 @@
-@import "../bower_components/bootstrap-sass/lib/bootstrap.scss";
-
-$iconSpritePath: "../images/glyphicons-halflings.png";
-$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
-
-html, body {
-  margin: 20px;
-}
+@import "themes";
+@import "../bower_components/bootstrap-sass/lib/bootstrap";
+$fa-font-path: '../bower_components/Font-Awesome/fonts';
+@import "../bower_components/Font-Awesome/scss/font-awesome";
+@import "../bower_components/select2/select2.css";
+@import "leaderboard";
+@import "upvotes";
+@import "footer";
+@import "header";
 
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+  background: $ps-bg;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+.highlight {
+  color: $highlight;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+strong {
+  color: $ps-nav-bg;
+}
+
+#main {
+  margin-bottom: 3em;
+}
+
+hr {
+  border-color: $highlight;
+  border-bottom: 0;
 }

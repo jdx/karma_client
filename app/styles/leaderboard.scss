@@ -1,0 +1,15 @@
+#leaderboard {
+  > li {
+    .fa {
+      color: $ps-nav-bg;
+    }
+    > p {
+      margin-left: 15px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+  .badge-karma {
+    background: $highlight;
+  }
+}
