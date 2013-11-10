@@ -1,16 +1,20 @@
 require.config
   paths:
-    dom_ready: '../bower_components/requirejs-domready/domReady'
     angular: '../bower_components/angular/angular'
-    angular_sanitize: '../bower_components/angular-sanitize/angular-sanitize'
-    angular_cookies: '../bower_components/angular-cookies/angular-cookies'
     jquery: '../bower_components/jquery/jquery'
     underscore: '../bower_components/underscore/underscore'
+    angular_route: '../bower_components/angular-route/angular-route'
   shim:
-    angular_cookies:
-      deps: ['angular']
-    angular_sanitize:
-      deps: ['angular']
-    angular:
-      exports: 'angular'
-  deps: ['underscore', 'bootstrap']
+    angular: { exports: 'angular' }
+  deps: ['underscore']
+  priority: 'angular'
+
+require [
+  'angular',
+  'app',
+  'controllers/index',
+  'services/index',
+  'routes',
+  ], (angular) ->
+    angular.element(document).ready ->
+      angular.bootstrap(document, ['app'])

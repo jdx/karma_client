@@ -1,4 +1,2 @@
-window.local = window.location.port == "9000"
-
-define ['angular', 'controllers/index'], (ng) ->
-  ng.module 'app', ['app.controllers']
+define ['angular'], (ng) ->
+  ng.module 'app', ['ngRoute']

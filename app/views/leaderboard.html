@@ -1,0 +1,14 @@
+<div class="hero-unit">
+  <h1>Karma</h1>
+  <ul>
+    <li ng-repeat="user in leaderboard" ng-sort="user.karma">{{user.name}} +{{user.karma}}</li>
+  </ul>
+  <form action="" role="form" class="form-inline" ng-submit="upvoteUser()">
+    <div class="form-group">
+      <select class="form-control" ng-model="user">
+        <option ng-repeat="user in users">{{user}}</option>
+      </select>
+    </div>
+    <input class="btn btn-primary" type="submit" value="++" />
+  </form>
+</div>

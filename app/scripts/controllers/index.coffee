@@ -1,1 +1,1 @@
-define ['./user']
+define ['./user_controller']
