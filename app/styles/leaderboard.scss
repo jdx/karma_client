@@ -1,15 +1,35 @@
+@import "themes";
+
 #leaderboard {
   > li {
+    &:first-child {
+      .fa, > p, strong {
+        color: $highlight;
+      }
+    }
     .fa {
       color: $ps-nav-bg;
+      position: relative;
+      > span {
+        position: absolute;
+        display: inline-block;
+        text-align: center;
+        line-height: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
     }
     > p {
-      margin-left: 15px;
       vertical-align: middle;
       display: inline-block;
     }
   }
   .badge-karma {
     background: $highlight;
+    font-size: 20px;
   }
 }
