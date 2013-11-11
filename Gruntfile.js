@@ -113,6 +113,12 @@ module.exports = function (grunt) {
           src: '{,*/}*.coffee',
           dest: '<%= yeoman.dist %>/scripts',
           ext: '.js'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>/scripts',
+          src: '{,*/}*.coffee',
+          dest: '.tmp/scripts',
+          ext: '.js'
         }]
       },
       test: {
@@ -324,7 +330,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    aws: grunt.file.readJSON('./aws.json'),
+    aws: grunt.file.exists('./aws.json') ? grunt.file.readJSON('./aws.json') : {},
     s3: {
       options: {
         key:    '<%= aws.key %>',
