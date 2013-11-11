@@ -13,8 +13,19 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     bower: {
-      target: {
-        rjsConfig: 'app/config.js'
+      target: { rjsConfig: '.tmp/scripts/main.js' }
+    },
+    requirejs: {
+      compile: {
+        options: {
+          name: 'app',
+          mainConfigFile: '.tmp/scripts/main.js',
+          baseDir: '.tmp/scripts',
+          paths: {
+            'app': '../../.tmp/scripts/app'
+          },
+          out: 'dist/scripts/scripts.js',
+        }
       }
     },
     yeoman: {
@@ -108,6 +119,7 @@ module.exports = function (grunt) {
     coffee: {
       options: {
         sourceMap: true,
+        bare: true,
         sourceRoot: ''
       },
       dist: {
@@ -291,6 +303,17 @@ module.exports = function (grunt) {
         html: ['<%= yeoman.dist %>/*.html']
       }
     },
+    autoprefixer: {
+      options: ['last 1 version'],
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: '.tmp/styles/'
+        }]
+      }
+    },
     ngmin: {
       dist: {
         files: [{
@@ -308,6 +331,31 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/scripts/scripts.js'
           ]
         }
+      }
+    },
+    aws: grunt.file.readJSON('./aws.json'),
+    s3: {
+      options: {
+        key:    '<%= aws.key %>',
+        secret: '<%= aws.secret %>',
+        bucket: '<%= aws.bucket %>',
+        access: 'public-read',
+        headers: {
+          'Cache-Control': 'max-age=630720000, public',
+          'Expires': new Date(Date.now() + 63072000000).toUTCString()
+        }
+      },
+      dist: {
+        options: {
+          encodePaths: true,
+          maxOperations: 20
+        },
+        upload: [{
+          src: 'dist/**',
+          dest: '',
+          rel: 'dist',
+          options: { gzip: true }
+        }]
       }
     }
   });
@@ -336,6 +384,9 @@ module.exports = function (grunt) {
     'clean:dist',
     'useminPrepare',
     'concurrent:dist',
+    'requirejs',
+    'autoprefixer',
+    'concat',
     'copy:dist',
     'cdnify',
     'ngmin',
@@ -351,5 +402,8 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.loadNpmTasks('grunt-bower-requirejs');
+  grunt.registerTask('deploy', [
+    'build',
+    's3'
+  ]);
 };

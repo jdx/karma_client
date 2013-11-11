@@ -1,4 +1,4 @@
-@import "bourbon/app/assets/stylesheets/_bourbon";
+@import "../bower_components/bourbon/app/assets/stylesheets/_bourbon";
 
 .blank-out {
   display: none;
@@ -26,11 +26,11 @@
 .upvote-form-transition {
   &.ng-enter {
     @include transition(all 1s);
-    @include translate(0, 150px);
+    @include transform(translateY(150px));
     max-height: 0;
   }
   &.ng-enter.ng-enter-active {
-    @include translate(0, 0);
+    @include transform(translateY(0));
     max-height: 160px;
   }
 }
@@ -38,11 +38,11 @@
 .upvote-button-transition {
   &.ng-leave {
     @include transition(all 1s);
-    @include translate(0, 0);
+    @include transform(translateY(0));
     max-height: 80px;
   }
   &.ng-leave.ng-leave-active {
-    @include translate(0, -70px);
+    @include transform(translateY(-70px));
     max-height: 0;
   }
 }
