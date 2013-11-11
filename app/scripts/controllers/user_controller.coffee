@@ -15,6 +15,11 @@ define ["app"], (app) ->
       $scope.user = null
       $scope.users = []
       $scope.reloadUsers()
+      $scope.formState = 'button'
 
     $scope.select2Options =
       width: "400"
+
+    $scope.formState = 'button'
+    $scope.showForm = ->
+      $scope.formState = 'form'
