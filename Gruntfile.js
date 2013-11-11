@@ -17,18 +17,6 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-    requirejs: {
-      compile: {
-        options: {
-          name: 'app',
-          mainConfigFile: '.tmp/scripts/main.js',
-          paths: {
-            'app': '../../.tmp/scripts/app'
-          },
-          out: 'dist/scripts/main.js',
-        }
-      }
-    },
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -123,7 +111,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>/scripts',
           src: '{,*/}*.coffee',
-          dest: '.tmp/scripts',
+          dest: '<%= yeoman.dist %>/scripts',
           ext: '.js'
         }]
       },
@@ -349,10 +337,11 @@ module.exports = function (grunt) {
           encodePaths: true,
           maxOperations: 20
         },
-        sync: [{
+        upload: [{
           src: 'dist/**',
           dest: '',
           rel: 'dist',
+          verify: true,
           options: { gzip: true }
         }]
       }
@@ -384,14 +373,12 @@ module.exports = function (grunt) {
     'copy:js',
     'useminPrepare',
     'concurrent:dist',
-    'requirejs',
     'autoprefixer',
     'concat',
     'copy:dist',
     'cdnify',
     'ngmin',
     'cssmin',
-    'uglify',
     'usemin'
   ]);
 
