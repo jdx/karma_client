@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - '0.10'
 before_script:
-  - 'npm install -g bower grunt-cli'
-  - 'gem install compass'
-  - 'bower install'
+  - npm install -g bower grunt-cli
+  - gem install compass
+  - bower install
+nojifications:
+  flowdock:
+    secure: WxrnAcMW4zcRo4ogzu6PzXgcaf0gT7uvpiyZPF2uBDBt9V7/GRX8E8G8UMPQE5B398kpYvWLSST9tNhI5dfK+/BSTfZIn05yei8zFwmCS/GWfEj8i2YgaWlRQLQGZtKFoud6JDPMTy93gf2x02j2V72oM5cPitVEjNOrTa7QXaQ=
