@@ -47,7 +47,8 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "mocha": "~1.14.0",
     "karma-mocha": "~0.1.0",
-    "grunt-bower-requirejs": "~0.7.1"
+    "grunt-bower-requirejs": "~0.7.1",
+    "grunt-bower-task": "~0.3.4"
   },
   "engines": {
     "node": ">=0.8.0"

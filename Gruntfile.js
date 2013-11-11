@@ -12,26 +12,22 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-    bower: {
-      target: { rjsConfig: '.tmp/scripts/main.js' }
+    yeoman: {
+      // configurable paths
+      app: require('./bower.json').appPath || 'app',
+      dist: 'dist'
     },
     requirejs: {
       compile: {
         options: {
           name: 'app',
           mainConfigFile: '.tmp/scripts/main.js',
-          baseDir: '.tmp/scripts',
           paths: {
             'app': '../../.tmp/scripts/app'
           },
-          out: 'dist/scripts/scripts.js',
+          out: 'dist/scripts/main.js',
         }
       }
-    },
-    yeoman: {
-      // configurable paths
-      app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
     },
     watch: {
       coffee: {
@@ -176,9 +172,7 @@ module.exports = function (grunt) {
     },
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>'
-      }
+      options: { dest: '<%= yeoman.dist %>' }
     },
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
@@ -270,23 +264,32 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
+      },
+      js: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/bower_components',
+        dest: '.tmp/bower_components/',
+        src: '**/*.js'
+      },
     },
     concurrent: {
       server: [
         'coffee:dist',
         'compass:server',
-        'copy:styles'
+        'copy:styles',
+        'copy:js'
       ],
       test: [
         'coffee',
         'compass',
-        'copy:styles'
+        'copy:styles',
+        'copy:js'
       ],
       dist: [
         'coffee',
         'compass:dist',
         'copy:styles',
+        'copy:js',
         'imagemin',
         'svgmin',
         'htmlmin'
@@ -339,18 +342,14 @@ module.exports = function (grunt) {
         key:    '<%= aws.key %>',
         secret: '<%= aws.secret %>',
         bucket: '<%= aws.bucket %>',
-        access: 'public-read',
-        headers: {
-          'Cache-Control': 'max-age=630720000, public',
-          'Expires': new Date(Date.now() + 63072000000).toUTCString()
-        }
+        access: 'public-read'
       },
       dist: {
         options: {
           encodePaths: true,
           maxOperations: 20
         },
-        upload: [{
+        sync: [{
           src: 'dist/**',
           dest: '',
           rel: 'dist',
@@ -382,6 +381,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'copy:js',
     'useminPrepare',
     'concurrent:dist',
     'requirejs',
@@ -392,7 +392,6 @@ module.exports = function (grunt) {
     'ngmin',
     'cssmin',
     'uglify',
-    'rev',
     'usemin'
   ]);
 
