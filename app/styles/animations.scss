@@ -1,0 +1,48 @@
+@import "bourbon/app/assets/stylesheets/_bourbon";
+
+.blank-out {
+  display: none;
+}
+
+.blank-out-add {
+  @include perspective(300px);
+  @include perspective-origin(30% 30%);
+  @include animation-name(fallOff);
+  @include animation-duration(2s);
+  @include animation-timing-function(ease-in-out);
+  @include transform-origin(center bottom);
+  display: block;
+}
+
+@include keyframes(fallOff) {
+  0% {
+    @include transform(rotateX(0deg));
+  }
+  100% {
+    @include transform(rotateX(90deg));
+  }
+}
+
+.upvote-form-transition {
+  &.ng-enter {
+    @include transition(all 1s);
+    @include translate(0, 150px);
+    max-height: 0;
+  }
+  &.ng-enter.ng-enter-active {
+    @include translate(0, 0);
+    max-height: 160px;
+  }
+}
+
+.upvote-button-transition {
+  &.ng-leave {
+    @include transition(all 1s);
+    @include translate(0, 0);
+    max-height: 80px;
+  }
+  &.ng-leave.ng-leave-active {
+    @include translate(0, -70px);
+    max-height: 0;
+  }
+}

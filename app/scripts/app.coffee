@@ -1,2 +1,2 @@
 define ['angular'], (ng) ->
-  ng.module 'app', ['ngRoute', 'ui.select2']
+  ng.module 'app', ['ngRoute', 'ngAnimate', 'ui.select2']

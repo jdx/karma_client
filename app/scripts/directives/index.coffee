@@ -1,1 +1,1 @@
-define ['./form_directive']
+define ['./upvote_comments']

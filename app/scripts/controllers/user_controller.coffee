@@ -1,21 +1,19 @@
 define ["app"], (app) ->
-  app.controller 'UserCtrl', ($scope, $leaderboardService, $upvoteService) ->
-    $scope.reloadUsers = ->
-      $leaderboardService.get().success (res) ->
-        $scope.leaderboard = res
-        $scope.users = _.pluck(res, 'name')
-    $scope.reloadUsers()
+  ctrl = ($scope, $leaderboardService, $upvoteService) ->
+    $leaderboardService.get().success (res) ->
+      $scope.leaderboard = res
+      $scope.users = _.pluck(res, 'name')
 
+    $scope.upvote = {}
     $scope.upvoteUser = ->
-      $upvoteService.upvote $scope.user, $scope.comments
-      user = _.find $scope.leaderboard, (user) -> user["name"] == $scope.user
-      user["karma"]++
-      $scope.comments = null
-      # HACK since select2 appears to have a bug
-      $scope.user = null
-      $scope.users = []
-      $scope.reloadUsers()
-      $scope.formState = 'button'
+      if $scope.upvote.user
+        $upvoteService.upvote $scope.upvote.user, $scope.upvote.comments
+        user = _.find $scope.leaderboard, (user) -> user["name"] == $scope.upvote.user
+        user["karma"]++
+        $scope.comments = null
+        # HACK since select2 appears to have a bug
+        $scope.upvote = {}
+        $scope.formState = 'button'
 
     $scope.select2Options =
       width: "400"
@@ -23,3 +21,4 @@ define ["app"], (app) ->
     $scope.formState = 'button'
     $scope.showForm = ->
       $scope.formState = 'form'
+  app.controller 'UserCtrl', ['$scope', '$leaderboardService', '$upvoteService', ctrl]

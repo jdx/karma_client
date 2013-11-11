@@ -1,12 +1,8 @@
 @import "themes";
 
 #upvotes {
+  display: relative;
   > li {
-    > form {
-      .form-group {
-        max-width: 400px;
-      }
-    }
     > .fa {
       color: $ps-nav-bg;
     }
@@ -14,6 +10,16 @@
       margin-left: 15px;
       vertical-align: middle;
       display: inline-block;
+    }
+  }
+}
+
+#upvote-form-container {
+  overflow: hidden;
+  max-height: 140px;
+  > div > form {
+    .form-group {
+      max-width: 400px;
     }
   }
 }
