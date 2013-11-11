@@ -14,10 +14,10 @@
   <div class="col-md-6">
     <h3>Upvotes</h3>
     <ul id='upvotes' class='list-group'>
-      <li ng-show="formState == 'button'" class="clearfix list-group-item">
+      <li form-slide-state="button" class="clearfix list-group-item">
         <button ng-click="showForm()" class="btn btn-primary btn-lg btn-block">Upvote Someone</button>
       </li>
-      <li ng-show="formState == 'form'" class="clearfix list-group-item">
+      <li form-slide-state="form" class="clearfix list-group-item">
         <form action="" role="form" ng-submit="upvoteUser()">
           <button class="btn btn-primary pull-right" type="submit">
             <i class="fa fa-thumbs-up fa-5x"></i>

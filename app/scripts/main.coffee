@@ -19,6 +19,7 @@ require [
   'app',
   'controllers/index',
   'services/index',
+  'directives/index',
   'routes',
   ], (angular) ->
     angular.element(document).ready ->
