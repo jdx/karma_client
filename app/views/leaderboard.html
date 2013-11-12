@@ -2,7 +2,7 @@
   <div class="col-md-6 leaderboard">
     <h3>Leaderboard</h3>
     <ul id="leaderboard" class="list-group">
-      <li class="list-group-item" ng-repeat="user in leaderboard | orderBy:'-karma'">
+      <li leaderboard-user class="list-group-item" ng-repeat="user in leaderboard | orderBy:'-karma'">
         <p class='star'><i ng-if="$index<3" class='fa fa-star-o fa-3x'><span>{{$index+1}}</span></i></p>
         <p>
           <strong>{{user.name}}</strong>
@@ -14,31 +14,30 @@
   <div class="col-md-6">
     <h3>Upvotes</h3>
     <ul id='upvotes' upvote-form class='list-group'>
-      <li id='upvote-form-container' class='list-group-item'>
-        <div ng-if="formState == 'button'" class="upvote-button-transition form-button">
-          <button ng-click="showForm()" class="btn btn-primary btn-lg btn-block">Upvote Someone</button>
-        </div>
-        <div ng-if="formState == 'form'" class="upvote-form-transition formForm clearfix">
-          <form action="" role="form" ng-submit="upvoteUser()">
-            <button class="btn btn-primary pull-right" type="submit">
-              <i class="fa fa-thumbs-up fa-5x"></i>
-            </button>
-            <div class="form-group">
-              <select ng-required="true" ui-select2="select2Options" ng-model="upvote.user">
-                <option value=""></option>
-                <option ng-repeat="user in users">{{user}}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input ng-model='upvote.comments' upvote-comments class='form-control input-lg'></input>
-            </div>
-          </form>
-        </div>
+      <li ng-if="formState == 'button'" class="list-group-item upvote-form-transition form-button">
+        <button ng-click="showForm()" class="btn btn-primary btn-lg btn-block">Upvote Someone</button>
       </li>
-      <li ng-repeat="user in users" class="list-group-item">
+      <li ng-if="formState == 'form'" class="list-group-item upvote-form-transition formForm clearfix">
+        <form action="" role="form" ng-submit="upvoteUser()">
+          <button class="btn btn-primary pull-right" type="submit">
+            <i class="fa fa-thumbs-up fa-5x"></i>
+          </button>
+          <div class="form-group">
+            <select ng-required="true" ui-select2="{width:400}" ng-model="upvote.user">
+              <option value=""></option>
+              <option ng-repeat="user in users">{{user}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input ng-model='upvote.comment' upvote-comments class='form-control input-lg'></input>
+          </div>
+        </form>
+      </li>
+      <li ng-repeat="upvote in upvotes" class="upvotes-transition list-group-item">
         <p><i class='fa fa-thumbs-up fa-3x'></i></p>
         <p class='body'>
-          <strong class="highlight">{{user}}++</strong> for fixing karma by <strong>@dickeyxxx</strong>
+          <strong class="highlight">{{upvote.user}}++</strong>
+          <span>{{upvote.comment}}</span>
         </p>
       </li>
     </ul>

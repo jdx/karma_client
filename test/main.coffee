@@ -1,5 +1,4 @@
 tests = []
-tests.push 'angular_animate'
 tests.push 'main'
 tests.push 'angular_mocks'
 for file in Object.keys(window.__karma__.files)

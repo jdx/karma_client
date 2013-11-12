@@ -1,1 +1,1 @@
-define ['./upvote_comments']
+define ['./upvote_comments', './leaderboard_user']
